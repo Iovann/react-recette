@@ -1,5 +1,6 @@
 #fond{
-    background-image: url('/assets/icons/fond.webp') !important;
+    background-image: url('/assets/icons/background.svg') !important;
     background-position: right top;
     background-repeat: no-repeat;
+    background-size: 55% !important;
 }

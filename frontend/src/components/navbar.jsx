@@ -3,7 +3,7 @@ import React from 'react'
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-xl mb-5">
+        <nav className="navbar navbar-expand-xl mb-5 shadow-none">
             <div className="container">
                 <a className="navbar-brand align-items-center">
                     <img src="/assets/icons/logo.svg" className='img-fluid' alt="" />

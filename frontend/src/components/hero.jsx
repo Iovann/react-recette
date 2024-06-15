@@ -1,11 +1,37 @@
 import React from 'react'
+import { MDBBtn } from 'mdb-react-ui-kit';
 
 const Hero = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+    return (
+        <div className='container'>
+            <div className="text-center d-block d-lg-none">
+                <span className='display-5 fw-bold'>Votre Plat Quotidien</span> <br />
+                <span className='display-4 fw-bold'>Un <span style={{ color: '#B55D51' }}>Voyage Culinaire</span></span>
+            </div>
+            <div className="row justify-content-between">
+                <div className="col-lg-6 order-last order-lg-first text-center text-lg-start">
+                    <div className="d-none d-lg-block">
+                        <span className='display-5 fw-bold'>Votre Plat Quotidien</span> <br />
+                        <span className='display-5 fw-bold'>Un <span style={{ color: '#B55D51' }}>Voyage Culinaire</span></span>
+                    </div>
+                    <p className='py-lg-3 fw-semibold'> Explorez une galaxie de saveurs, partagez vos créations gourmandes et connectez-vous avec d'autres passionnés de cuisine. Inspirez-vous, échangez des recettes authentiques et embarquez pour une aventure culinaire inoubliable chaque jour.</p>
+
+                    <div>
+                    <MDBBtn className='mx-1 fw-bold text-capitalize' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn>
+                    <MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn>
+                    </div>
+
+                    <p className='mt-3 d-none d-lg-block'>Avez-vous un compte? <span style={{ color: '#B55D51' }}>Connectez-vous</span></p>
+                </div>
+
+                <div className="col-lg-6 order-first order-lg-last">
+                    <p className='text-end'>
+                        <img src="./assets/images/hero.webp" alt="" className='img-fluid' />
+                    </p>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Hero
