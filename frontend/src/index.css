@@ -8,8 +8,24 @@
 .brown{
     color: #B55D51 !important;
 }
+
+.card {
+    transition: transform 0.5s ease-in-out !important;
+}
+
+.card:hover {
+    transform: scale(1.06);
+}
+
 @media (max-width: 1199px) {
     .text{
         font-size: 2.25rem !important;
+    }
+}
+
+
+@media (max-width: 1399px ) and (min-width:768px) {
+    .cals{
+        width: 51%;
     }
 }
