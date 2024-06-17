@@ -8,11 +8,19 @@
 .brown{
     color: #B55D51 !important;
 }
+.bg-brown{
+    background-color: #B55D51;
+}
 
 .card {
     transition: transform 0.5s ease-in-out !important;
 }
-
+.bg-rose{
+    background-color: #FFF0ED;
+}
+.bg-brown:hover{
+    background-color: #B55D51;
+}
 .card:hover {
     transform: scale(1.06);
 }
