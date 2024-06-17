@@ -4,6 +4,7 @@ import Hero from '../components/hero'
 import Share from '../components/share'
 import Row_card from '../components/row_card'
 import Blog_row from '../components/blog_row'
+import Popular_row from '../components/popular_row'
 
 const Home = () => {
     const [card, setCard] = useState([]);
@@ -30,6 +31,21 @@ const Home = () => {
             { image: '/assets/images/food_15.jpg', title: 'Brochettes', name: 'Alex MARTIN', avatar: "/assets/icons/avatar.jpg", count: 2.8, cals: 432 },
         ];
         setRecipe(data.slice(0, 6));
+    }, []);
+
+    const [categorie, setCategorie] = useState([]);
+    useEffect(() => {
+        const data = [
+            { image: './assets/images/menu_2.png', title: 'FastFood'},
+            { image: './assets/images/menu_3.png', title: 'Dessert'},
+            { image: './assets/images/menu_4.png', title: 'Petit Déjeuner'},
+            { image: './assets/images/menu_5.png', title: 'Patisserie'},
+            { image: './assets/images/menu_8.png', title: 'Déjeuner'},
+            { image: './assets/images/menu_7.png', title: 'Collation'},
+            { image: './assets/images/menu_6.png', title: 'Dîner'},
+            { image: './assets/images/menu_1.png', title: 'Plat Étranger'},
+        ];
+        setCategorie(data.slice(0, 8));
     }, []);
 
     return (
@@ -71,6 +87,7 @@ const Home = () => {
             <div className="container py-5">
                 <h1>Categories Populaire</h1>
                 <p className='brown fs-5 fw-bold text-end pb-5 pt-0'>Voir plus</p>
+                <Popular_row pop={categorie}/>
             </div>
         </>
     )
