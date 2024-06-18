@@ -13,6 +13,10 @@
     background-color: #B55D51;
 }
 
+.border-brown{
+    border-color: #B55D51 !;
+}
+
 .card {
     transition: transform 0.5s ease-in-out !important;
 }
@@ -41,10 +45,15 @@ hr {
 
 .bg-brown:hover {
     background-color: #B55D51;
+    color: #000 !important;
 }
 
 .card:hover {
     transform: scale(1.06);
+}
+
+.out{
+    outline: none !important;
 }
 
 @media (max-width: 1199px) {

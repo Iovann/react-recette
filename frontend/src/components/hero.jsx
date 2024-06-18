@@ -18,8 +18,8 @@ const Hero = () => {
                     <p className='py-lg-3 fw-semibold'> Explorez une galaxie de saveurs, partagez vos créations gourmandes et connectez-vous avec d'autres passionnés de cuisine. Inspirez-vous, échangez des recettes authentiques et embarquez pour une aventure culinaire inoubliable chaque jour.</p>
 
                     <div>
-                        <MDBBtn className='mx-1 fw-bold text-capitalize d-inline d-lg-none' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn>
-                        <Link to='/inscription'><MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn></Link>
+                    <Link to="/connexion"><MDBBtn className='mx-1 d-lg-none fw-bold text-capitalize' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn></Link>
+                    <Link to='/inscription' className=''><MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn></Link>
                     </div>
 
                     <p className='mt-3 d-none d-lg-block'>Avez-vous un compte? <span style={{ color: '#B55D51' }}>Connectez-vous</span></p>

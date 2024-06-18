@@ -33,7 +33,7 @@ const Navbar = () => {
                     </ul>
 
                     <div className='d-flex justify-content-xl-between'>
-                        <MDBBtn className='mx-1 fw-bold text-capitalize' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn>
+                        <Link to="/connexion"><MDBBtn className='mx-1 fw-bold text-capitalize' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn></Link>
                        <Link to='/inscription'><MDBBtn  className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn></Link>
                     </div>
                 </div>

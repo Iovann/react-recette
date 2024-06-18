@@ -11,7 +11,7 @@ const Footer = () => {
                     <div className="container text-center text-lg-start mt-5">
                         <div className="row mt-3 justify-content-evenly">
                             <div className=" col-lg-4 col-xl-3 mb-4">
-                                <p className='d-flex justify-content-center'>
+                                <p className='d-flex justify-content-center justify-content-lg-start'>
                                     <a className="navbar-brand align-items-center text-center">
                                         <img src="/assets/icons/logo.svg" className='img-fluid' alt="" />
                                         <span className='ms-3 fw-bolder fs-4'>Cuisto<span style={{ color: "#974344" }}>Recettes</span> </span>
