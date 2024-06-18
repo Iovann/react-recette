@@ -1,39 +1,67 @@
-#fond{
+#fond {
     background-image: url('/assets/icons/background.svg') !important;
     background-position: right top;
     background-repeat: no-repeat;
     background-size: 55% !important;
 }
 
-.brown{
+.brown {
     color: #B55D51 !important;
 }
-.bg-brown{
+
+.bg-brown {
     background-color: #B55D51;
 }
 
 .card {
     transition: transform 0.5s ease-in-out !important;
 }
-.bg-rose{
+
+.bg-rose {
     background-color: #FFF0ED;
 }
-.bg-brown:hover{
+
+.circle-container {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.circle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-brown:hover {
     background-color: #B55D51;
 }
+
 .card:hover {
     transform: scale(1.06);
 }
 
 @media (max-width: 1199px) {
-    .text{
+    .text {
         font-size: 2.25rem !important;
     }
 }
 
 
-@media (max-width: 1399px ) and (min-width:768px) {
-    .cals{
+@media (max-width: 1399px) and (min-width:768px) {
+    .cals {
         width: 51%;
+    }
+}
+
+@media (max-width: 400px) {
+    .circle-container {
+        width: 8em;
+        height: 8em;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
     }
 }

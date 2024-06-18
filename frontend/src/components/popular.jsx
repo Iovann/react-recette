@@ -1,11 +1,10 @@
 import React from 'react'
 
-const Popular = ({ image, title }) => {
+const Popular = ({ image}) => {
     return (
-        <>
-            <img src={image} className='rounded-circle img-fluid mb-3' alt="image de categorie" />
-            <p className='text-center fw-bold fs-5'>{title}</p>
-        </>
+        <div className='circle-container mx-auto'>
+            <img src={image} className='circle-image img-fluid mb-3' alt="image de categorie" />
+        </div>
     )
 }
 
