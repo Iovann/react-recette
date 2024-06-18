@@ -16,7 +16,7 @@ const Blog_row = () => {
         <div className="container">
             <div className="row gx-4">
                 {art.map((item, index) => (
-                    <div key={index} className="col-md-6">
+                    <div key={index} className="col-lg-6">
                         <Blog_card image={item.image} title={item.title} subtitle={item.subtitle} content={item.content} />
                     </div>
                 ))}

@@ -1,4 +1,5 @@
 import { MDBBtn } from 'mdb-react-ui-kit';
+import { Link } from 'react-router-dom';
 import React from 'react'
 
 const Navbar = () => {
@@ -15,25 +16,25 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse d-xl-flex justify-content-evenly" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 fw-bold">
                         <li className="nav-item mx-1">
-                            <a className="nav-link active" aria-current="page" href="#">Acceuil</a>
+                            <Link to="/" className="nav-link active" aria-current="page" href="#">Acceuil</Link>
                         </li>
                         <li className="nav-item mx-1">
-                            <a className="nav-link" href="#">Recette</a>
+                            <Link to="/" className="nav-link" href="#">Recette</Link>
                         </li>
                         <li className="nav-item mx-1">
-                            <a className="nav-link">Ajouter une Recette</a>
+                            <Link to="/" className="nav-link">Ajouter une Recette</Link>
                         </li>
                         <li className="nav-item mx-1">
-                            <a className="nav-link">Blog</a>
+                            <Link to="/" className="nav-link">Blog</Link>
                         </li>
                         <li className="nav-item mx-1">
-                            <a className="nav-link">A propos</a>
+                            <Link to="/" className="nav-link">A propos</Link>
                         </li>
                     </ul>
 
                     <div className='d-flex justify-content-xl-between'>
                         <MDBBtn className='mx-1 fw-bold text-capitalize' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn>
-                        <MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn>
+                       <Link to='/inscription'><MDBBtn  className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn></Link>
                     </div>
                 </div>
             </div>

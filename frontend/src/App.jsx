@@ -1,9 +1,14 @@
 import React from 'react';
-import { MDBBtn } from 'mdb-react-ui-kit';
 import Home from './pages/home';
-function App() {
+import Inscription from './pages/inscription';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';function App() {
   return (
-    <Home />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/inscription" element={<Inscription />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

@@ -35,6 +35,10 @@
     object-fit: cover;
 }
 
+hr {
+    border: 1px solid #000;
+}
+
 .bg-brown:hover {
     background-color: #B55D51;
 }
@@ -63,5 +67,11 @@
         border-radius: 50%;
         overflow: hidden;
         position: relative;
+    }
+}
+
+@media (max-width: 992px) {
+    .text-justify {
+        text-align: justify;
     }
 }

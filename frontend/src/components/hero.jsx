@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { MDBBtn } from 'mdb-react-ui-kit';
 
 const Hero = () => {
@@ -18,7 +19,7 @@ const Hero = () => {
 
                     <div>
                         <MDBBtn className='mx-1 fw-bold text-capitalize d-inline d-lg-none' color='light' rippleColor='dark' style={{ backgroundColor: '#EBEBEB' }}>Connexion</MDBBtn>
-                        <MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn>
+                        <Link to='/inscription'><MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn></Link>
                     </div>
 
                     <p className='mt-3 d-none d-lg-block'>Avez-vous un compte? <span style={{ color: '#B55D51' }}>Connectez-vous</span></p>

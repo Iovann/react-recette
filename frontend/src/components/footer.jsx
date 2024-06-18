@@ -1,69 +1,58 @@
 import React from 'react'
+import { FaTiktok, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import { TbBrandPinterest } from "react-icons/tb";
 
 const Footer = () => {
     return (
         <div>
             <footer className="text-center text-lg-start bg-body-tertiary text-muted py-4">
                 <section className="">
-                    <div className="container text-center text-md-start mt-5">
-                        <div className="row mt-3">
-                            <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                                <h6 className="text-uppercase fw-bold mb-4">Company name</h6>
-                                <p>HBienvenue sur notre plateforme de partage de recettes culinaires, où les passionnés de cuisine se rencontrent et s'inspirent mutuellement. Découvrez une multitude de recettes savoureuses, partagez vos propres créations, et faites partie d'une communauté culinaire dynamique. Ensemble, rendons chaque repas spécial.</p>
+                    <div className="container text-center text-lg-start mt-5">
+                        <div className="row mt-3 justify-content-evenly">
+                            <div className=" col-lg-4 col-xl-3 mb-4">
+                                <p className='d-flex justify-content-center'>
+                                    <a className="navbar-brand align-items-center text-center">
+                                        <img src="/assets/icons/logo.svg" className='img-fluid' alt="" />
+                                        <span className='ms-3 fw-bolder fs-4'>Cuisto<span style={{ color: "#974344" }}>Recettes</span> </span>
+                                    </a>
+                                </p>
+                                <p className='fw-bold fs-5 text-center text-lg-start'>Découvrez une multitude de recettes savoureuses, partagez vos propres créations, et faites partie d'une communauté culinaire dynamique.</p>
                             </div>
 
-                            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                                <h6 className="text-uppercase fw-bold mb-4">
-                                    Products
-                                </h6>
-                                <p>
-                                    <a href="#!" className="text-reset">Angular</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-reset">React</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-reset">Vue</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-reset">Laravel</a>
-                                </p>
+                            <div className=" col-lg-2 col-xl-2 mb-2 mt-4">
+                                <h6 className="text-uppercase fw-bold mb-4 text-black fw-bolder">Accès rapide</h6>
+                                <p><span href="#!" className="text-reset fw-semibold">Acceuil</span></p>
+                                <p><span href="#!" className="text-reset fw-semibold">Recette</span></p>
+                                <p><span href="#!" className="text-reset fw-semibold">Blog</span></p>
                             </div>
-
-                            <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                                <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
-                                <p>
-                                    <a href="#!" className="text-reset">Pricing</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-reset">Settings</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-reset">Orders</a>
-                                </p>
-                                <p>
-                                    <a href="#!" className="text-reset">Help</a>
-                                </p>
+                            <div className=" col-lg-2 col-xl-2  mb-2 mt-4">
+                                <h6 className="text-uppercase fw-bold mb-4 text-black fw-bolder">Liens Utiles</h6>
+                                <p><span href="#!" className="text-reset fw-semibold">Partager une recette</span></p>
+                                <p><span href="#!" className="text-reset fw-semibold">À Propos</span></p>
+                                <p><span href="#!" className="text-reset fw-semibold">Contact</span></p>
                             </div>
-                            <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-                                <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-                                <p><i className="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                                <p>
-                                    <i className="fas fa-envelope me-3"></i>
-                                    info@example.com
-                                </p>
-                                <p><i className="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                                <p><i className="fas fa-print me-3"></i> + 01 234 567 89</p>
+                            <div className=" col-lg-2 col-xl-2 mb-2 mt-4">
+                                <h6 className="text-uppercase fw-bold mb-4 text-black fw-bolder">MentionLégals</h6>
+                                <p><span href="#!" className="text-reset fw-semibold">Conditions d'utilisation</span></p>
+                                <p><span href="#!" className="text-reset fw-semibold">Confidentialité et cookies</span></p>
                             </div>
                         </div>
                     </div>
                 </section>
-                <div className="text-center p-4">
-                    © 2021 Copyright:
-                    <a className="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                <div className="container">
+                    <hr />
+                    <div className="row justify-content-between align-items-center">
+                        <div className="col-lg-4 fw-semibold text-black mt-3">© 2024 Plateforme de Recettes Culinaires.</div>
+                        <div className="col-lg-2 fw-semibold text-black mt-3">By Iovann ATCHO</div>
+                        <div className="col-lg-4 text-end d-flex justify-content-evenly mt-3">
+                            <FaTiktok className='border border-2 border-black p-1' color='black' size={30} />
+                            <BsTwitterX size={30} color='black' />
+                            <FaFacebookF size={30} color='black' />
+                            <FaInstagram size={30} color='black' />
+                            <TbBrandPinterest size={30} color='black' />
+                        </div>
+                    </div>
                 </div>
             </footer>
         </div>

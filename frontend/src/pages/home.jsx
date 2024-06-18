@@ -49,7 +49,7 @@ const Home = () => {
 
             <div className="container-fluid bg-rose">
                 <div className="row justify-content-center py-5 px-lg-5 px-1">
-                    <div className="col-lg-6 col-sm-10 text-center">
+                    <div className="col-lg-6  col-xxl-4 col-sm-10 text-center">
                         <h1 className='py-3'>Gardez le contact!</h1>
                         <p className='text-center py-3 fs-4'>Rejoignez notre newsletter pour que nous puissions vous tenir informé de nos actualités et offres.</p>
                         <form action="" className='d-lg-flex text-center align-items-center justify-content-between'>
