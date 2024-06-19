@@ -24,19 +24,31 @@ const Inscription = () => {
     e.preventDefault();
     setLoading(true);
 
-    try {
-      const res = await api.post('api/user/', {
-        username: email,
+    const data = {
+      user: {
+        username: lastName,
+        email: email,
         first_name: firstName,
         last_name: lastName,
-        email: email,
-        phone_number: phoneNumber,
         password: password,
+      },
+      phone_number: phoneNumber,
+    };
+
+    try {
+      const res = await api.post('api/user/', data, {
+        headers: {
+          "Content-Type": "application/json"
+        }
       });
 
       navigate("/connexion");
     } catch (error) {
-      alert(error);
+      if (error.response && error.response.data) {
+        alert(JSON.stringify(error.response.data));
+      } else {
+        alert(error.message);
+      }
     } finally {
       setLoading(false);
     }
