@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import api from "../api";
 import Loading from '../components/Loading';
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constant";
 
 
 const Inscription = () => {
@@ -26,7 +25,7 @@ const Inscription = () => {
 
     const data = {
       user: {
-        username: lastName,
+        username: email,
         email: email,
         first_name: firstName,
         last_name: lastName,

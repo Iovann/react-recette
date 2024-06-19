@@ -4,7 +4,6 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from .serializers import UserProfile, UserProfileSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from rest_framework.parsers import MultiPartParser, FormParser
 
 # Create your views here.
     
@@ -24,7 +23,7 @@ class CreateUserView(generics.CreateAPIView):
 class UserProfileView(generics.RetrieveUpdateAPIView):
     queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get_object(self):
         return self.request.user.profile
