@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Input, Ripple, initMDB } from "mdb-ui-kit";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookSquare } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constant";
-import api from "../api";
 import Loading from '../components/Loading';
+import GoogleLoginButton from '../components/GoogleLogin';
 
 const Connexion = () => {
   initMDB({ Input, Ripple });
@@ -83,22 +81,9 @@ const Connexion = () => {
 
             {loading && <Loading />}
 
-            <div className="">
+            <div className="text-center">
               <p className='text-center'>Vous pouvez également vous connectez avec:</p>
-              <div className="row gx-2 gy-4">
-                <div className="col-lg-6">
-                  <button type="button" className="btn btn-secondary-subtle btn-block rounded-pill btn-floating py-2 text-start d-flex align-items-center">
-                    <FcGoogle className='mx-2 ' size={30} />
-                    <span className='text-capitalize'>Connexion <span className="text-lowercase">avec </span>Google</span>
-                  </button>
-                </div>
-                <div className="col-lg-6">
-                  <button type="button" className="btn btn-secondary-subtle btn-block rounded-pill btn-floating py-2 text-start d-flex align-items-center">
-                    <FaFacebookSquare className='mx-2' size={30} color='blue' />
-                    <span className='text-capitalize'>Connexion <span className="text-lowercase">avec </span>Facebook</span>
-                  </button>
-                </div>
-              </div>
+              <GoogleLoginButton />
             </div>
           </form>
         </div>
