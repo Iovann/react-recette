@@ -2,7 +2,6 @@ import React from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-const clientId = '850597076986-mmsmqvepv5t0f1m3tffl6jjd0gu7idhk.apps.googleusercontent.com';
 
 const GoogleLoginButton = () => {
     const handleSuccess = async (response) => {
