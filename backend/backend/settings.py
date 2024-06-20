@@ -61,19 +61,7 @@ AUTHENTICATION_BACKENDS = [
     # 'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'APP': {
-#             'client_id': '850597076986-mmsmqvepv5t0f1m3tffl6jjd0gu7idhk.apps.googleusercontent.com',
-#             'secret': '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',
-#             'key': ''
-#         },
-#         'SCOPE': ['profile', 'email'],
-#         'AUTH_PARAMS': {'access_type': 'online'},
-#         'OAUTH_PKCE_ENABLED': True,
-#         'FETCH_USERINFO': True,
-#     }
-# }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
