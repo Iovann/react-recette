@@ -29,14 +29,14 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
         return self.request.user.profile
 
     
-# def google_login_view(request):
-#     client_id = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['client_id']
-#     redirect_uri = 'http://localhost:8000/api/google-login/'  # Assurez-vous que cette URL correspond à celle configurée dans Google Cloud
-#     scope = 'openid profile email'
+def google_login_view(request):
+    client_id = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['client_id']
+    redirect_uri = 'http://localhost:8000/accounts/google/login/callback/'  # Assurez-vous que cette URL correspond à celle configurée dans Google Cloud
+    scope = 'openid profile email'
 
-#     auth_url = f'https://accounts.google.com/o/oauth2/auth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope={scope}'
+    auth_url = f'https://accounts.google.com/o/oauth2/auth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope={scope}'
 
-#     return redirect(auth_url)
+    return redirect(auth_url)
 
 # class GoogleLogin(SocialLoginView):
 #     adapter_class = GoogleOAuth2Adapter
