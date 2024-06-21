@@ -1,10 +1,13 @@
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { MDBTooltip } from 'mdb-react-ui-kit';
 
 import React from 'react'
 
 const NavbarProfile = () => {
+    const Logout = () => {
+        localStorage.clear()
+    }
     return (
         <nav className="navbar navbar-expand-xl mb-5 shadow-none navbar-before-scroll">
             <div className="container">
@@ -38,7 +41,7 @@ const NavbarProfile = () => {
                         <MDBTooltip tag='a' wrapperProps={{ href: '#' }} placement='bottom' title="ATCHO Iovann">
                             <p className='text-end mb-0 mx-2'><img src="./assets/icons/avatar.jpg" className='rounded-circle' style={{ width: "50%" }} alt="" /></p>
                         </MDBTooltip>
-                        <Link to='/inscription'><MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Deconnexion</MDBBtn></Link>
+                        <Link to={"/connexion"}><MDBBtn onClick={Logout} className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Deconnexion</MDBBtn></Link>
                     </div>
                 </div>
             </div>

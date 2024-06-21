@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constant";
 import Loading from '../components/Loading';
-import GoogleLoginButton from '../components/GoogleLogin';
+// import GoogleLoginButton from '../components/GoogleLogin';
 
 const Connexion = () => {
   initMDB({ Input, Ripple });
@@ -31,7 +31,7 @@ const Connexion = () => {
         const data = await response.json();
         localStorage.setItem(ACCESS_TOKEN, data.access);
         localStorage.setItem(REFRESH_TOKEN, data.refresh);
-        navigate("/");
+        navigate("/profile");
       } else {
         alert("Login failed!");
       }
@@ -83,7 +83,7 @@ const Connexion = () => {
 
             <div className="text-center">
               <p className='text-center'>Vous pouvez également vous connectez avec:</p>
-              <GoogleLoginButton />
+              {/* <GoogleLoginButton /> */}
             </div>
           </form>
         </div>

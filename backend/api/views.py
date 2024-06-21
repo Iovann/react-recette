@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from rest_framework import generics, status
 from rest_framework.response import Response
-from .serializers import UserProfile, UserProfileSerializer
+from .serializers import UserProfile, UserProfileSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from django.conf import settings
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework import permissions
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
+
 # Create your views here.
     
 class CreateUserView(generics.CreateAPIView):
@@ -27,17 +32,21 @@ class UserProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user.profile
-
     
-def google_login_view(request):
-    client_id = settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['client_id']
-    redirect_uri = 'http://localhost:8000/accounts/google/login/callback/'  # Assurez-vous que cette URL correspond à celle configurée dans Google Cloud
-    scope = 'openid profile email'
 
-    auth_url = f'https://accounts.google.com/o/oauth2/auth?client_id={client_id}&redirect_uri={redirect_uri}&response_type=code&scope={scope}'
+class MyTokenObtainPairSerializer(TokenObtainPairView):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        data.update({'user': UserSerializer(self.user).data})
+        return data
 
-    return redirect(auth_url)
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
-# class GoogleLogin(SocialLoginView):
-#     adapter_class = GoogleOAuth2Adapter
-    
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user_profile = UserProfile.objects.get(user=request.user)
+        serializer = UserProfileSerializer(user_profile)
+        return Response(serializer.data)

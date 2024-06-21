@@ -49,8 +49,8 @@ function ProtectedRoute({ children }) {
 
     if (isAuthorized === null) {
         return (
-            <div class="spinner-border" role="status">
-                <span class="">Loading...</span>
+            <div className="spinner-border" role="status">
+                <span className="">Loading...</span>
             </div>);
     }
 
