@@ -1,34 +1,60 @@
-import React, { useEffect, useState } from 'react'
-import NavbarProfile from '../components/NavbarProfile'
-import Hero from '../components/hero'
-import Share from '../components/share'
-import Row_card from '../components/row_card'
-import Blog_row from '../components/blog_row'
-import Popular_row from '../components/popular_row'
+import React, { useEffect, useState } from 'react';
+import NavbarProfile from '../components/NavbarProfile';
+import Share from '../components/share';
+import Row_card from '../components/row_card';
+import Blog_row from '../components/blog_row';
+import Popular_row from '../components/popular_row';
 import { dataCategorie, dataRecipe, dataCard } from '../common/data';
 import Footer from '../components/footer';
+import axios from 'axios';
+import HeroAcceuil from '../components/HeroAcceuil';
 
 const Acceuil = () => {
+    const [profile, setProfile] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [card, setCard] = useState([]);
-    useEffect(() => {
-        setCard(dataCard.slice(0, 6));
-    }, []);
-
     const [recipe, setRecipe] = useState([]);
-    useEffect(() => {
-        setRecipe(dataRecipe.slice(0, 6));
-    }, []);
-
     const [categorie, setCategorie] = useState([]);
+
     useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const token = localStorage.getItem('access');
+                if (!token) {
+                    throw new Error("Token not found");
+                }
+
+                const response = await axios.get('http://localhost:8000/api/user/profile/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                setProfile(response.data);
+            } catch (error) {
+                setError('Erreur de récupération du profil');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProfile();
+        setCard(dataCard.slice(0, 6));
+        setRecipe(dataRecipe.slice(0, 6));
         setCategorie(dataCategorie.slice(0, 8));
     }, []);
 
+    if (loading) {
+        return <div>Chargement...</div>;
+    }
+
+    const fullname = `${profile.user.first_name} ${profile.user.last_name}`
     return (
         <>
-            <div id='fond'>
-                <NavbarProfile />
-                <Hero />
+            <div id=''>
+                <NavbarProfile name={fullname}/>
+                <HeroAcceuil infos={profile.user.last_name}/>
             </div>
             <Share />
             <div className="container py-5">
@@ -52,9 +78,18 @@ const Acceuil = () => {
                 <p className='brown fs-5 fw-bold text-end pb-5 pt-0'>Voir plus</p>
                 <Popular_row pop={categorie} />
             </div>
+
+            {/* <div>
+                <h1>Profil de l'utilisateur</h1>
+                <p>Nom d'utilisateur: {profile.user.username}</p>
+                <p>Email: {profile.user.email}</p>
+                <p>Nom complet: {profile.user.first_name} {profile.user.last_name}</p>
+                <p>Numéro de téléphone: {profile.phone_number}</p>
+                <img src={profile.avatar} alt="Avatar" />
+            </div> */}
             <Footer />
         </>
-    )
+    );
 }
 
-export default Acceuil
+export default Acceuil;

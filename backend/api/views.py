@@ -50,3 +50,32 @@ class UserProfileView(APIView):
         user_profile = UserProfile.objects.get(user=request.user)
         serializer = UserProfileSerializer(user_profile)
         return Response(serializer.data)
+    
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            user_profile, created = UserProfile.objects.get_or_create(user=request.user)
+            serializer = UserProfileSerializer(user_profile)
+            return Response(serializer.data)
+        except Exception as e:
+            return Response({"detail": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def post(self, request):
+        serializer = UserProfileSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request):
+        try:
+            user_profile = UserProfile.objects.get(user=request.user)
+            serializer = UserProfileSerializer(user_profile, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except UserProfile.DoesNotExist:
+            return Response({"detail": "UserProfile not found."}, status=status.HTTP_404_NOT_FOUND)

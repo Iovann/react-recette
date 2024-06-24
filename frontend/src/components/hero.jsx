@@ -22,7 +22,7 @@ const Hero = () => {
                     <Link to='/inscription' className=''><MDBBtn className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Inscription</MDBBtn></Link>
                     </div>
 
-                    <p className='mt-3 d-none d-lg-block'>Avez-vous un compte? <span style={{ color: '#B55D51' }}>Connectez-vous</span></p>
+                    <p className='mt-3 d-none d-lg-block'>Avez-vous un compte? <Link to="/connexion" className='text-decoration-none' style={{ color: '#B55D51' }}>Connectez-vous</Link></p>
                 </div>
 
                 <div className="col-lg-6 order-first order-lg-last">

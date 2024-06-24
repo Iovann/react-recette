@@ -1,23 +1,40 @@
 import { MDBBtn } from 'mdb-react-ui-kit';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MDBTooltip } from 'mdb-react-ui-kit';
 
 import React from 'react'
 
-const NavbarProfile = () => {
+const NavbarProfile = ({ name }) => {
     const Logout = () => {
         localStorage.clear()
     }
     return (
-        <nav className="navbar navbar-expand-xl mb-5 shadow-none navbar-before-scroll">
+        <nav className="navbar navbar-expand-xl shadow-none navbar-before-scroll">
             <div className="container">
-                <a className="navbar-brand align-items-center">
-                    <img src="/assets/icons/logo.svg" className='img-fluid' alt="" />
-                    <span className='fw-bolder'>Cuisto<span style={{ color: "#974344" }}>Recettes</span> </span>
-                </a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                <div className="d-flex justify-content-between align-items-center w-100 d-xl-none">
+                    <span className="navbar-brand align-items-center">
+                        <img src="/assets/icons/logo.svg" className='img-fluid' alt="" />
+                        <span className='fw-bolder brand'>Cuisto<span style={{ color: "#974344" }}>Recettes</span> </span>
+                    </span>
+
+                    <div className="text-end">
+                        <MDBTooltip tag='a' wrapperProps={{ href: '#' }} placement='bottom' title={name}>
+                            <span className='text-end mb-0 me-1'><img src="./assets/icons/avatar.jpg" className='rounded-circle' style={{ width: "25%" }} alt="" /></span>
+                        </MDBTooltip>
+                        <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div className="d-none d-xl-flex">
+                    <span className="navbar-brand align-items-center">
+                        <img src="/assets/icons/logo.svg" className='img-fluid' alt="" />
+                        <span className='fw-bolder'>Cuisto<span style={{ color: "#974344" }}>Recettes</span> </span>
+                    </span>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                </div>
                 <div className="collapse navbar-collapse d-xl-flex justify-content-evenly" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 fw-bold">
                         <li className="nav-item mx-1">
@@ -38,8 +55,8 @@ const NavbarProfile = () => {
                     </ul>
 
                     <div className='d-flex align-items-center'>
-                        <MDBTooltip tag='a' wrapperProps={{ href: '#' }} placement='bottom' title="ATCHO Iovann">
-                            <p className='text-end mb-0 mx-2'><img src="./assets/icons/avatar.jpg" className='rounded-circle' style={{ width: "50%" }} alt="" /></p>
+                        <MDBTooltip tag='a'  wrapperProps={{ href: '#' }} placement='bottom' title={name}>
+                            <p className='text-end mb-0 mx-2 d-none d-xl-block'><img src="./assets/icons/avatar.jpg" className='rounded-circle' style={{ width: "50%" }} alt="" /></p>
                         </MDBTooltip>
                         <Link to={"/connexion"}><MDBBtn onClick={Logout} className='mx-1 fw-bold text-capitalize text-white' color='white' rippleColor='light' style={{ backgroundColor: '#B55D51' }} >Deconnexion</MDBBtn></Link>
                     </div>
