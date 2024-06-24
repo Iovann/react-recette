@@ -17,7 +17,7 @@ const NavbarProfile = ({ name }) => {
 
                     <div className="text-end">
                         <Link to="/user/profile">
-                            <span className='text-end mb-0 me-1 d-block d-xl-none'><img src="./assets/icons/avatar.jpg" className='rounded-circle' style={{ width: "25%" }} alt="" /></span>
+                            <span className='text-end mb-0 me-1 d-block d-xl-none'><img src="/public/assets/icons/avatar.jpg" className='rounded-circle' style={{ width: "25%" }} alt="" /></span>
                         </Link>
                         <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>

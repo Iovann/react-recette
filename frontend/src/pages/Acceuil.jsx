@@ -98,15 +98,6 @@ const Acceuil = () => {
                 <p className='brown fs-5 fw-bold text-end pb-5 pt-0'>Voir plus</p>
                 <Popular_row pop={categorie} />
             </div>
-
-            {/* <div>
-                <h1>Profil de l'utilisateur</h1>
-                <p>Nom d'utilisateur: {profile.user.username}</p>
-                <p>Email: {profile.user.email}</p>
-                <p>Nom complet: {profile.user.first_name} {profile.user.last_name}</p>
-                <p>Numéro de téléphone: {profile.phone_number}</p>
-                <img src={profile.avatar} alt="Avatar" />
-            </div> */}
             <Footer />
         </>
     );
