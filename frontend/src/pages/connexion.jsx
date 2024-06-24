@@ -31,7 +31,7 @@ const Connexion = () => {
         const data = await response.json();
         localStorage.setItem(ACCESS_TOKEN, data.access);
         localStorage.setItem(REFRESH_TOKEN, data.refresh);
-        navigate("/profile");
+        navigate("/user");
       } else {
         alert("Login failed!");
       }

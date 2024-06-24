@@ -38,18 +38,38 @@ const Acceuil = () => {
                 setLoading(false);
             }
         };
-
         fetchProfile();
         setCard(dataCard.slice(0, 6));
         setRecipe(dataRecipe.slice(0, 6));
         setCategorie(dataCategorie.slice(0, 8));
     }, []);
+    
+    const dataConstructor = (profile) =>{
+        const data = {
+            id: profile.user.id,
+            nom: profile.user.first_name,
+            prenom: profile.user.last_name,
+            email: profile.user.email,
+            avatar: profile.avatar,
+            tel: profile.phone_number
+        }
+        return data
+    }
+    
+    let data = null;
+    if (profile) {
+        data = dataConstructor(profile);
+    }
 
     if (loading) {
         return <div>Chargement...</div>;
     }
-
-    const fullname = `${profile.user.first_name} ${profile.user.last_name}`
+    
+    if (error) {
+        return <div>{error}</div>;
+    }
+    const fullname = `${data.nom} ${data.prenom}`;
+    
     return (
         <>
             <div id=''>

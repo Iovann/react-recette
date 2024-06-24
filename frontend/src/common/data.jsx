@@ -1,4 +1,3 @@
-
 export const dataCard = [
     { image: '/assets/images/food_5.jpg', title: 'Voandzou', name: 'Alex MARTIN', avatar: "/assets/icons/avatar.jpg", count: 2.9, cals: 534 },
     { image: '/assets/images/food_2.jpg', title: 'Salade', name: 'Alex MARTIN', avatar: "/assets/icons/avatar.jpg", count: 3.0, cals: 100 },
@@ -26,4 +25,3 @@ export const dataCategorie = [
     { image: './assets/images/menu_6.png', title: 'Dîner' },
     { image: './assets/images/menu_1.png', title: 'Plat Étranger' },
 ];
-

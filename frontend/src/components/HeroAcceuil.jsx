@@ -31,7 +31,7 @@ const HeroAcceuil = ({infos}) => {
 
             <div className="carousel-inner">
                 <div className="carousel-item active image-container">
-                    <img src="./assets/images/banner_8.jpeg" className="d-block w-100 carousel-container" alt="Sunset Over the City" />
+                    <img src="./assets/images/banner_9.jpeg" className="d-block w-100 carousel-container" alt="Sunset Over the City" />
                     <div className="carousel-caption d-none d-md-block carousel-center">
                         <h5 className='display-3'>Bienvenue {infos}</h5>
                         <p className='h1 fw-bold'>Prêt pour explorer de nouvelles recettes ?</p>
@@ -47,7 +47,7 @@ const HeroAcceuil = ({infos}) => {
                 </div>
 
                 <div className="carousel-item image-container">
-                    <img src="./assets/images/banner_9.jpeg" className="d-block w-100 carousel-container" alt="Cliff Above a Stormy Sea" />
+                    <img src="./assets/images/banner_9.jpg" className="d-block w-100 carousel-container" alt="Cliff Above a Stormy Sea" />
                     <div className="carousel-caption d-none d-md-block carousel-center">
                         <h5 className='display-3'>Bienvenue {infos}</h5>
                         <p className='h1 fw-bold'>Prêt pour explorer de nouvelles recettes ?</p>
