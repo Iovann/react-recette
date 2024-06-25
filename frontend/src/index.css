@@ -37,7 +37,7 @@
     background-color: #FFF0ED;
 }
 
-.text-height{
+.text-height {
     height: 3em !important;
     line-height: 1em !important;
 }
@@ -50,9 +50,14 @@
     position: relative;
 }
 
-.photo{
+.photo {
     width: 5em;
     height: 5em;
+}
+
+.avatar {
+    width: 3em !important;
+    height: 3em !important;
 }
 
 .circle-image {
@@ -83,9 +88,9 @@ hr {
 .image-container {
     position: relative;
     display: inline-block;
-  }
-  
-  .image-container::before {
+}
+
+.image-container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -95,13 +100,23 @@ hr {
     background-color: rgba(139, 69, 19, 0.5);
     mix-blend-mode: multiply;
     pointer-events: none;
-  }
-  
-  .image-container img {
+}
+
+.image-container img {
     display: block;
     width: 100%;
     height: auto;
-  }
+}
+
+
+.p-rating-item-active {
+    color: #B55D51;
+}
+
+.p-rating-icon{
+    width: 2em;
+    height: 2em;
+}
 
 @keyframes spin {
     0% {
