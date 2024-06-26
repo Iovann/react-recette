@@ -92,7 +92,6 @@ class RecipeStepSerializer(serializers.ModelSerializer):
         fields = ['id', 'recipe', 'step_number', 'description', 'photo']
 
     def create(self, validated_data):
-        # Assurez-vous que `recipe` est un champ attendu
         recipe = validated_data.pop('recipe')
         step = RecipeStep.objects.create(recipe=recipe, **validated_data)
         return step

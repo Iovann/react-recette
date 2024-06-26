@@ -8,8 +8,7 @@ import axios from 'axios';
 
 
 const CreateRecipe = () => {
-    const fileInputRef = useRef(null);
-    const [imageUrl, setImageUrl] = useState('');
+    const [imageUrl, setImageUrl] = useState(null);
     const [description, setDescription] = useState('');
     const [ingredients, setIngredients] = useState(['']);
     const [items, setItems] = useState([{ photo: null, instructions: '' }]);
@@ -21,20 +20,23 @@ const CreateRecipe = () => {
     const [category, setCategory] = useState('');
     const [photo, setPhoto] = useState(null);
 
-    const handleButtonClick = () => {
-        fileInputRef.current.click();
-    };
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
+
         if (file) {
             const reader = new FileReader();
+
             reader.onloadend = () => {
                 setImageUrl(reader.result);
+                setPhoto(reader.result);
             };
+
             reader.readAsDataURL(file);
         }
     };
+
+
 
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
@@ -82,7 +84,7 @@ const CreateRecipe = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-    
+
         const formData = new FormData();
         formData.append('title', title);
         formData.append('ingredients', ingredients.join(','));
@@ -92,22 +94,20 @@ const CreateRecipe = () => {
         if (photo) {
             formData.append('photo', dataURLtoFile(photo, 'recipe-photo.jpg'));
         }
-    
+
         try {
             const token = localStorage.access;
-            console.log(token)
             const recipeResponse = await axios.post('http://127.0.0.1:8000/api/recipes/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
                 }
             });
-    
-            const recipeId = recipeResponse.data.id; // Récupération de l'ID de la recette
-            console.log(recipeId)
+
+            const recipeId = recipeResponse.data.id;
             const steps = items.map((item, index) => {
                 const stepFormData = new FormData();
-                stepFormData.append('recipe', recipeId); // Ajout de l'ID de la recette
+                stepFormData.append('recipe', recipeId);
                 stepFormData.append('step_number', index + 1);
                 stepFormData.append('description', item.instructions);
                 if (item.photo) {
@@ -115,7 +115,7 @@ const CreateRecipe = () => {
                 }
                 return stepFormData;
             });
-    
+
             for (const stepFormData of steps) {
                 await axios.post('http://127.0.0.1:8000/api/steps/', stepFormData, {
                     headers: {
@@ -124,61 +124,13 @@ const CreateRecipe = () => {
                     }
                 });
             }
-    
+
             console.log('Recipe submitted successfully');
             // Redirigez ou mettez à jour l'interface utilisateur selon les besoins
         } catch (error) {
             console.error('Error submitting recipe:', error.response ? error.response.data : error.message);
         }
     };
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-
-    //     const formData = new FormData();
-    //     formData.append('title', title);
-    //     formData.append('ingredients', ingredients.join(','));
-    //     formData.append('prep_time', prepTime);
-    //     formData.append('cook_time', cookTime);
-    //     formData.append('servings', servings);
-    //     if (photo) {
-    //         formData.append('photo', dataURLtoFile(photo, 'recipe-photo.jpg'));
-    //     }
-
-    //     const steps = []; // Initialisation du tableau steps
-
-    //     // Boucle forEach pour traiter chaque item
-    //     items.forEach((item, index) => {
-    //         // Création d'un objet step pour chaque item
-    //         const step = {
-    //             step_number: index + 1,
-    //             description: item.instructions
-    //         };
-        
-    //         // Ajout de la propriété photo si elle est présente
-    //         if (item.photo) {
-    //             step.photo = dataURLtoFile(item.photo, `step-photo-${index}.jpg`);
-    //         }
-        
-    //         // Ajout de l'objet step au tableau steps
-    //         steps.push({ [`steps[${index}]`]: step });
-    //     });
-    //     formData.append("steps", steps);
-
-    //     try {
-    //         const token = localStorage.access;
-    //         const response = await axios.post('http://127.0.0.1:8000/api/recipes/', formData, {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //                 'Authorization': `Bearer ${token}`
-    //             }
-    //         });
-    //         console.log('Submitted recipe:', response.data);
-    //         // Redirigez ou mettez à jour l'interface utilisateur selon les besoins
-    //     } catch (error) {
-    //         console.error('Error submitting recipe:', error.response ? error.response.data : error.message);
-    //     }
-    // };
-
 
 
     const dataURLtoFile = (dataurl, filename) => {
@@ -191,6 +143,7 @@ const CreateRecipe = () => {
         }
         return new File([u8arr], filename, { type: mime });
     };
+    
 
 
     const handleAddItem = () => {
@@ -248,18 +201,13 @@ const CreateRecipe = () => {
                             <label htmlFor="recipeimage" className="form-label fw-bold fs-4 text-black">Image de la recette</label>
                             <div style={{ minHeight: "250px" }} className='bg-secondary-subtle' id='recipeimage'>
                                 {imageUrl && (
-                                    <img src={imageUrl} alt="Uploaded" style={{ maxWidth: '100%', height: 'auto' }} />
+                                    <img src={imageUrl} alt="Uploaded" style={{ maxWidth: '100%', height: '250px' }} />
                                 )}
                             </div>
-                            <div className='bg-secondary-subtle rounded-3 photo my-2 mx-1 align-items-center row justify-content-center fw-bold' onClick={handleButtonClick}>
-                                <MdOutlineAddAPhoto size={30} className='mt-3' />
-                                <p className='text-center'>Ajouter</p>
-                            </div>
                             <input
+                                className='form-control mt-2'
                                 type="file"
-                                ref={fileInputRef}
                                 onChange={handleFileChange}
-                                style={{ display: 'none' }}
                             />
                         </div>
                         <div>
