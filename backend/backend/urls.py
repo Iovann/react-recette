@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from api.views import CreateUserView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -13,4 +15,4 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     # path('account/google/login/callback/', google_login_view, name='google_login'),
     # path('api/google-login/', .as_view(), name='google_login'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

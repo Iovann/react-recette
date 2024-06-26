@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from rest_framework import generics, status
+from rest_framework import generics, status, viewsets
 from rest_framework.response import Response
-from .serializers import UserProfile, UserProfileSerializer, UserSerializer
+from .serializers import UserProfile, UserProfileSerializer, UserSerializer,RecipeSerializer, RecipeStepSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from .models import Recipe, RecipeStep
 
 # Create your views here.
     
@@ -79,3 +79,24 @@ class UserProfileView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except UserProfile.DoesNotExist:
             return Response({"detail": "UserProfile not found."}, status=status.HTTP_404_NOT_FOUND)
+        
+class RecipeViewSet(viewsets.ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class RecipeStepViewSet(viewsets.ModelViewSet):
+    queryset = RecipeStep.objects.all()
+    serializer_class = RecipeStepSerializer
+    permission_classes = [IsAuthenticated]
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

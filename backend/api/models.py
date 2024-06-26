@@ -12,11 +12,10 @@ class UserProfile(models.Model):
     
 class Recipe(models.Model):
     title = models.CharField(max_length=255)
-    ingredients = models.TextField()
-    instructions = models.TextField()
-    prep_time = models.IntegerField(help_text="Preparation time in minutes")
-    cook_time = models.IntegerField(help_text="Cooking time in minutes")
-    servings = models.IntegerField(help_text="Number of servings")
+    ingredients = models.TextField(help_text="Liste des ingrédients séparés par des virgules")
+    prep_time = models.IntegerField(help_text="Temps de préparation en minutes")
+    cook_time = models.IntegerField(help_text="Temps de cuisson en minutes")
+    servings = models.IntegerField(help_text="Nombre de portions")
     photo = models.ImageField(upload_to='recipe_photos/', null=True, blank=True)
     author = models.ForeignKey(User, related_name='recipes', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -36,7 +35,7 @@ class RecipeStep(models.Model):
         ordering = ['step_number']
 
     def __str__(self):
-        return f"{self.recipe.title} - Step {self.step_number}"
+        return f"{self.recipe.title} - Étape {self.step_number}"
     
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

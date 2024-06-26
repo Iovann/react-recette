@@ -42,7 +42,7 @@ const NavbarProfile = ({ name }) => {
                             <Link to="/" className="nav-link" href="#">Recette</Link>
                         </li>
                         <li className="nav-item mx-1">
-                            <Link to="/" className="nav-link">Ajouter une Recette</Link>
+                            <Link to="/user/add" className="nav-link">Ajouter une Recette</Link>
                         </li>
                         <li className="nav-item mx-1">
                             <Link to="/" className="nav-link">Blog</Link>
